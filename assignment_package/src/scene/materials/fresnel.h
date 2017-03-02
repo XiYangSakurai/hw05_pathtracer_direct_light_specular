@@ -40,3 +40,11 @@ class FresnelDielectric : public Fresnel {
                       // has traveled, and the index of refraction of the medium into which
                       // the incident ray will be transmitted and refracted.
 };
+class FresnelConductor: public Fresnel
+{
+public:
+    FresnelConductor(float etaI,float etaT,float k):etaI(etaI),etaT(etaT),k(k){}
+    Color3f Evaluate(float cosThetaI) const;
+private:
+    float etaI,etaT,k; //spectrum
+};

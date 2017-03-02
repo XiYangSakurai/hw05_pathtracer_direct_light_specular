@@ -5,6 +5,10 @@ bool Primitive::Intersect(const Ray &r, Intersection *isect) const
     if(!shape->Intersect(r, isect)) return false;
     isect->objectHit = this;
     // We create a BSDF for this intersection in our Integrator classes
+    if(material)
+        {
+            material->ProduceBSDF(isect);
+        }
     return true;
 }
 
